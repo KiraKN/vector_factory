@@ -1,0 +1,143 @@
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Личный кабинет</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="image/logoA.png">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo-container">
+                <img src="image/logoA.png" alt="Логотип" class="logo-img">
+                <span class="logo-text">Личный кабинет</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="#" class="auth-link logout" id="logout-link">Выйти</a>
+            </nav>
+        </header>
+    
+        <main class="main-container">
+            <section class="cabinet">
+                <div class="user-info">
+                    <h2>Добро пожаловать, <span id="user-name">Пользователь</span>!</h2>
+                    <p>Email: <span id="user-email">email@example.com</span></p>
+                </div>
+    
+                <div class="orders">
+                    <h3>Ваши заказы</h3>
+                    <div id="order-list" class="order-list"></div>
+                </div>
+    
+                <div class="new-order">
+                    <h3>Новый заказ</h3>
+                    <form class="order-form" id="order-form">
+                        <label for="order-type">Тип:</label>
+                        <select id="order-type" required>
+                            <option value="window">Окно</option>
+                            <option value="door">Дверь</option>
+                            <option value="balcony">Балкон</option>
+                        </select>
+    
+                        <label for="width">Ширина (см):</label>
+                        <input type="number" id="width" min="10" max="1000" placeholder="100" required>
+    
+                        <label for="height">Высота (см):</label>
+                        <input type="number" id="height" min="10" max="1000" placeholder="120" required>
+    
+                        <div id="config-window" class="config-group">
+                            <label for="window-config">Конфигурация окна:</label>
+                            <select id="window-config">
+                                <option value="single-fixed">Одностворчатое глухое — 4,500 ₽/м²</option>
+                                <option value="single-open">Одностворчатое распашное — 5,000 ₽/м²</option>
+                                <option value="single-tilt-turn">Одностворчатое поворотно-откидное — 5,500 ₽/м²</option>
+                                <option value="double-fixed">Двухстворчатое глухое — 5,500 ₽/м²</option>
+                                <option value="double-open">Двухстворчатое распашное — 6,000 ₽/м²</option>
+                                <option value="double-tilt-turn">Двухстворчатое с поворотно-откидной створкой — 6,500 ₽/м²</option>
+                                <option value="triple">Трёхстворчатое — 6,500 ₽/м²</option>
+                            </select>
+                        </div>
+    
+                        <div id="config-door" class="config-group">
+                            <label for="door-config">Конфигурация двери:</label>
+                            <select id="door-config">
+                                <option value="single-in">Одиночная внутрь — 6,500 ₽/м²</option>
+                                <option value="single-out">Одиночная наружу — 6,500 ₽/м²</option>
+                                <option value="double">Двойная — 7,000 ₽/м²</option>
+                                <option value="sliding">Раздвижная — 7,500 ₽/м²</option>
+                            </select>
+                        </div>
+    
+                        <div id="config-balcony" class="config-group">
+                            <label for="balcony-config">Конфигурация балкона:</label>
+                            <select id="balcony-config">
+                                <option value="standard">Стандарт — 8,000 ₽/м²</option>
+                                <option value="extended">Расширенный — 9,000 ₽/м²</option>
+                                <option value="french">Французский — 9,500 ₽/м²</option>
+                            </select>
+                        </div>
+    
+                        <label for="profile-system">Профильная система:</label>
+                        <select id="profile-system" required>
+                            <option value="rula6">Rula 60 (+2,000 ₽)</option>
+                            <option value="rula7">Rula 70 (+3,000 ₽)</option>
+                            <option value="rula5">Rula 58 (+1,000 ₽)</option>
+                        </select>
+    
+                        <label for="sill">Подоконник:</label>
+                        <select id="sill" required>
+                            <option value="none">Без подоконника — 0 ₽</option>
+                            <option value="standard">Стандартный — 1,500 ₽</option>
+                            <option value="premium">Премиум — 3,000 ₽</option>
+                        </select>
+    
+                        <label for="ledge">Отлив:</label>
+                        <select id="ledge" required>
+                            <option value="none">Без отлива — 0 ₽</option>
+                            <option value="standard">Стандартный — 1,000 ₽</option>
+                            <option value="premium">Премиум — 2,000 ₽</option>
+                        </select>
+    
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="installation"> Монтаж</label>
+                            <label><input type="checkbox" id="delivery"> Доставка</label>
+                        </div>
+    
+                        <label for="district">Район:</label>
+                        <select id="district" required>
+                            <option value="center">Центр</option>
+                            <option value="near">До 10 км от центра</option>
+                            <option value="far">Более 10 км от центра</option>
+                        </select>
+    
+                        <button type="button" id="calculate-order-btn" class="cta-button">Рассчитать</button>
+                        <p id="order-result">Итоговая сумма: <span>0 ₽</span></p>
+                        <button type="submit" id="submit-order-btn" class="cta-button" disabled>Сделать заказ</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="image/logoA.png" alt="Логотип" class="logo-img">
+                    <span>ВЕКТОР</span>
+                </div>
+    
+                <div class="footer-contacts">
+                    <p>© 2025 Компания по производству окон и дверей</p>
+                    <p><a href="#" class="footer-admin-link">Вход для администратора</a></p>
+                </div>
+                <div class="footer-nav">
+                    <a href="index.html">Главная</a>
+                    <a href="cabinet.html">Личный кабинет</a>
+                </div>
+            </div>
+        </footer>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
